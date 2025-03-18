@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -27,6 +26,8 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.rama.gesturesanimations.compose.DragWithAnimationExample
+import com.rama.gesturesanimations.compose.VerticalDragExample
 import com.rama.gesturesanimations.ui.theme.GesturesAnimationsTheme
 
 class MainActivity : ComponentActivity() {
@@ -36,10 +37,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             GesturesAnimationsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Gestures",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    VerticalDragExample(innerPadding)
                 }
             }
         }

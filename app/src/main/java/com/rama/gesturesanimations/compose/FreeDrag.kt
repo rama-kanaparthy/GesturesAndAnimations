@@ -24,8 +24,7 @@ import kotlin.math.roundToInt
 
 
 @Composable
-fun VerticalDragExample(innerPadding: PaddingValues) {
-    var offsetX by remember { mutableStateOf(0f) }
+fun FreeDragExample(innerPadding: PaddingValues) {
     var offsetY by remember { mutableStateOf(0f) }
 
     Box(
@@ -36,13 +35,12 @@ fun VerticalDragExample(innerPadding: PaddingValues) {
     ) {
         Box(
             modifier = Modifier
-                .offset { IntOffset(offsetX.roundToInt(), offsetY.roundToInt()) }
+                .offset { IntOffset(0, offsetY.roundToInt()) }
                 .size(100.dp)
                 .background(Color.Blue)
                 .pointerInput(Unit) {
                     detectDragGestures { change, dragAmount ->
                         change.consume()  // Consume touch event
-                        offsetX += dragAmount.x
                         offsetY += dragAmount.y  // Move based on Y-axis drag
                     }
                 },
