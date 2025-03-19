@@ -1,4 +1,6 @@
-## Jetpack Compose Animations Cheat Sheet
+## Jetpack Compose Animations & Gestures Cheat Sheet
+
+### 🎨 **Animations**
 
 | Animation | Description |
 |-----------|------------|
@@ -12,9 +14,9 @@
 | `SwipeToDismiss()` | Swipe away list items |
 | `Custom Enter/Exit` | Fade, scale, slide animations |
 
-### Example Code Snippets
+#### Example Code Snippets
 
-#### `animateFloatAsState()` - Simple Animation
+##### `animateFloatAsState()` - Simple Animation
 ```kotlin
 val size by animateDpAsState(
     targetValue = if (expanded) 200.dp else 100.dp,
@@ -22,14 +24,14 @@ val size by animateDpAsState(
 )
 ```
 
-#### `animateContentSize()` - Auto Adjust Size
+##### `animateContentSize()` - Auto Adjust Size
 ```kotlin
 Box(
     modifier = Modifier.animateContentSize().background(Color.Red).clickable { expanded = !expanded }
 ) { /* Content */ }
 ```
 
-#### `Crossfade()` - UI State Change
+##### `Crossfade()` - UI State Change
 ```kotlin
 Crossfade(targetState = isFirst) { showFirst ->
     if (showFirst) Box(Modifier.size(100.dp).background(Color.Blue))
@@ -37,7 +39,7 @@ Crossfade(targetState = isFirst) { showFirst ->
 }
 ```
 
-#### `rememberInfiniteTransition()` - Looping Animation
+##### `rememberInfiniteTransition()` - Looping Animation
 ```kotlin
 val scale by rememberInfiniteTransition().animateFloat(
     initialValue = 0.8f,
@@ -49,14 +51,14 @@ val scale by rememberInfiniteTransition().animateFloat(
 )
 ```
 
-#### `AnimatedVisibility()` - Toggle Visibility
+##### `AnimatedVisibility()` - Toggle Visibility
 ```kotlin
 AnimatedVisibility(visible) {
     Box(Modifier.size(100.dp).background(Color.Cyan))
 }
 ```
 
-#### `SwipeToDismiss()` - Swipe to Delete
+##### `SwipeToDismiss()` - Swipe to Delete
 ```kotlin
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -71,5 +73,69 @@ fun SwipeToDismissExample() {
 }
 ```
 
-🚀 **Use these animations to enhance your Jetpack Compose UI!**
+---
+
+### ✋ **Gestures**
+
+| Gesture | Description |
+|---------|------------|
+| `clickable {}` | Detects single taps |
+| `combinedClickable {}` | Handles tap, long press, and double tap |
+| `pointerInput {}` | Custom touch handling |
+| `detectTapGestures()` | Detects tap, double tap, long press |
+| `detectDragGestures()` | Detects drag movements |
+| `detectTransformGestures()` | Detects pinch, zoom, rotation |
+
+#### Example Code Snippets
+
+##### `clickable {}` - Single Tap
+```kotlin
+Box(
+    modifier = Modifier.size(100.dp).background(Color.Blue).clickable {
+        println("Clicked!")
+    }
+)
+```
+
+##### `combinedClickable {}` - Multiple Gestures
+```kotlin
+Box(
+    modifier = Modifier.size(100.dp).background(Color.Green).combinedClickable(
+        onClick = { println("Single Click") },
+        onDoubleClick = { println("Double Click") },
+        onLongClick = { println("Long Press") }
+    )
+)
+```
+
+##### `detectTapGestures()` - Advanced Tap Handling
+```kotlin
+Modifier.pointerInput(Unit) {
+    detectTapGestures(
+        onTap = { println("Tapped") },
+        onDoubleTap = { println("Double Tapped") },
+        onLongPress = { println("Long Pressed") }
+    )
+}
+```
+
+##### `detectDragGestures()` - Drag Handling
+```kotlin
+Modifier.pointerInput(Unit) {
+    detectDragGestures { change, dragAmount ->
+        println("Dragging: $dragAmount")
+    }
+}
+```
+
+##### `detectTransformGestures()` - Pinch & Zoom
+```kotlin
+Modifier.pointerInput(Unit) {
+    detectTransformGestures { _, pan, zoom, rotation ->
+        println("Pan: $pan, Zoom: $zoom, Rotation: $rotation")
+    }
+}
+```
+
+🚀 **Use these gestures and animations to build smooth, interactive UI in Jetpack Compose!**
 
