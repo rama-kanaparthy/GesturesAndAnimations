@@ -28,9 +28,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rama.gesturesanimations.animations.AnimateContentSizeExample
+import com.rama.gesturesanimations.animations.AnimatedTextChange
 import com.rama.gesturesanimations.animations.CrossfadeExample
 import com.rama.gesturesanimations.animations.InfinitePulseExample
+import com.rama.gesturesanimations.animations.MultiPropertyAnimation
 import com.rama.gesturesanimations.animations.SimpleAnimation
+import com.rama.gesturesanimations.animations.SwipeToDismissExample
 import com.rama.gesturesanimations.animations.VisibilityExample
 import com.rama.gesturesanimations.ui.theme.GesturesAnimationsTheme
 
@@ -41,7 +44,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             GesturesAnimationsTheme {
                 Surface {
-                    VisibilityExample()
+                    SwipeToDismissExample()
                 }
             }
         }
