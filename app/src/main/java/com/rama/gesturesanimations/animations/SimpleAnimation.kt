@@ -33,7 +33,7 @@ fun SimpleAnimation() {
 
 @Preview(showBackground = true, device = "id:pixel_8a")
 @Composable
-fun GreetingPreview() {
+fun SimpleAnimationPreview() {
     GesturesAnimationsTheme {
         SimpleAnimation()
     }
