@@ -31,6 +31,7 @@ import com.rama.gesturesanimations.animations.AnimateContentSizeExample
 import com.rama.gesturesanimations.animations.CrossfadeExample
 import com.rama.gesturesanimations.animations.InfinitePulseExample
 import com.rama.gesturesanimations.animations.SimpleAnimation
+import com.rama.gesturesanimations.animations.VisibilityExample
 import com.rama.gesturesanimations.ui.theme.GesturesAnimationsTheme
 
 class MainActivity : ComponentActivity() {
@@ -40,7 +41,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             GesturesAnimationsTheme {
                 Surface {
-                    InfinitePulseExample()
+                    VisibilityExample()
                 }
             }
         }
