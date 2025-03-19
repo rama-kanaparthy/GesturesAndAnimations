@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -44,8 +46,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             GesturesAnimationsTheme {
-                Surface {
+                /*Surface {
                     CustomEnterExitAnimation()
+                }*/
+                Scaffold { innerPadding ->
+                    Greeting("Gestures And Animations", innerPadding)
                 }
             }
         }
@@ -53,7 +58,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(name: String, innerPaddingValues: PaddingValues) {
     var counter = remember { mutableStateOf(0) }
     Column(
         modifier = Modifier.padding(16.dp).fillMaxSize(),
@@ -63,11 +68,14 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             contentAlignment = Alignment.TopCenter,
             modifier = Modifier.padding(16.dp).fillMaxWidth().weight(1f)
         ) {
-            Text(
-                text = "${counter.value}",
-                modifier = modifier,
-                fontSize = 100.sp
-            )
+            AnimatedContent(targetState = counter.value) { targetCount ->
+                Text(
+                    text = "${targetCount}",
+                    modifier = Modifier.padding(16.dp),
+                    fontSize = 100.sp
+                )
+            }
+
         }
 
         Box(
@@ -88,12 +96,4 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         }
     }
 
-}
-
-@Preview(showBackground = true, device = "id:pixel_8a")
-@Composable
-fun GreetingPreview() {
-    GesturesAnimationsTheme {
-        Greeting("Increment")
-    }
 }
