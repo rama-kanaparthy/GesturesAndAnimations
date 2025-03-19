@@ -3,6 +3,8 @@ package com.rama.gesturesanimations.animations
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -19,15 +21,18 @@ import androidx.compose.runtime.setValue
 fun CustomEnterExitAnimation() {
     var visible by remember { mutableStateOf(true) }
 
-    AnimatedVisibility(
-        visible = visible,
-        enter = fadeIn() + scaleIn(),
-        exit = fadeOut() + slideOutHorizontally()
-    ) {
-        Box(modifier = Modifier.size(100.dp).background(Color.Green))
+    Column (modifier = Modifier.padding(50.dp)){
+        AnimatedVisibility(
+            visible = visible,
+            enter = fadeIn() + scaleIn(),
+            exit = fadeOut() + slideOutHorizontally()
+        ) {
+            Box(modifier = Modifier.size(100.dp).background(Color.Green))
+        }
+
+        Button(onClick = { visible = !visible }) {
+            Text("Toggle Animation")
+        }
     }
 
-    Button(onClick = { visible = !visible }) {
-        Text("Toggle Animation")
-    }
 }
