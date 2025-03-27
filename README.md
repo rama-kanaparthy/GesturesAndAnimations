@@ -15,6 +15,7 @@
 | `Custom Enter/Exit` | Fade, scale, slide animations |
 
 #### Example Code Snippets
+
 ##### `animateFloatAsState()` - Simple Animation
 ```kotlin
 val size by animateDpAsState(
