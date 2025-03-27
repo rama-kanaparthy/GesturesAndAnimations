@@ -24,6 +24,7 @@ val size by animateDpAsState(
 )
 ```
 
+
 ##### `animateContentSize()` - Auto Adjust Size
 ```kotlin
 Box(
